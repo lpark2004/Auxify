@@ -6,18 +6,63 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Album example · Bootstrap v5.3</title>
+    <title>Auxify</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
 
     <meta name="theme-color" content="#712cf9">
   </head>
   <body>
-    
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h3 id = "aux" onclick = "generatePlaylist()" class="animate-charcter"> AUXIFY</h3>
+                </div>
+              </div>
+
+            <p><span class = "bolded">Redefining music sharing and listening experiences.</span><p>
+            </p>
+            <input type="text" id="occasion" placeholder="What's the occasion?" value = ""/>
+            <input type="text" id="vibe" placeholder="What's the vibe?" value = ""/>
+            <input type="text" id="count" placeholder="What's the count?" value = "20"/>
+            <button id = "generate" onclick="generatePlaylist()" value = "clicked">GO</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+              <div class="card shadow-sm">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdQvOLqzNHSW?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcyiNvJqewCy?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1EIgzSCNweQzPQ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main>
     <div class="container">
         <div id="login">
           <h1>This is an example of the Authorization Code flow</h1>
-          <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+          <a id = "loginButton" href="/login" onclick = "w3.hide('#loginButton')" class="btn btn-primary">Log in with Spotify</a>
         </div>
         <div id="loggedin">
           <div id="user-profile">
@@ -27,17 +72,16 @@
           
         </div>
       </div>
+
+      
   
       <div id="chatbox">
         <div id="chatlogs">
           <div class="chat self">
-            <p>Generate playlist:</p>
+            <p>Status:</p>
           </div>
         </div>
-        <input type="text" id="occasion" placeholder="What's the occasion?" value = ""/>
-        <input type="text" id="vibe" placeholder="What's the vibe?" value = ""/>
-        <input type="text" id="count" placeholder="What's the count?" value = "20"/>
-        <button id = "generate" onclick="generatePlaylist()" value = "clicked">auxify</button>
+       
       </div>
       <script>
         
@@ -68,7 +112,7 @@
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer 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"
+              "Authorization": "Bearer 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"
             },
             body: JSON.stringify({
               prompt: chatinput.value,
@@ -120,15 +164,15 @@
   
   
       <script id="user-profile-template" type="text/x-handlebars-template">
-        <h1>Logged in as {{display_name}}</h1>
+        <!-- <h1>Logged in as {{display_name}}</h1>
           
         <div class="media">
           <div class="pull-left">
             <img class="media-object" width="150" src="{{images.0.url}}" />
           
-        </div>
+        </div> -->
       </script>
-  
+
       <script id="oauth-template" type="text/x-handlebars-template">
         
       </script>
@@ -153,7 +197,7 @@
             body: JSON.stringify({
               name: name,
               description: desc,
-              public: false // Set to true if you want the playlist to be public
+              public: true // Set to true if you want the playlist to be public
             })
           })
           .then(response => response.json())
@@ -292,62 +336,21 @@
         })();
       </script>
 
-<main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+    
 
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <h3 id = "aux" class="animate-charcter"> AUXIFY</h3>
-            </div>
-          </div>
-
-        <p><span class = "bolded">Redefining music sharing and listening experiences.</span><p>
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
         </p>
+        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
       </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdQvOLqzNHSW?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcyiNvJqewCy?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1EIgzSCNweQzPQ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer>
+    </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-      
+          
   </body>
 </html>
